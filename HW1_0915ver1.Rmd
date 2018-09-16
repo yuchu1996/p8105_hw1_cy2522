@@ -48,19 +48,19 @@ as.numeric(df_1$fac_1)
 ```{r convert}
 # convert the characters:
 
-char_fac<-as.factor(df_1$char_1)
-char_fac
+char_fac_1<-as.factor(df_1$char_1)
+char_fac_1
 
-fac_num<-as.numeric(char_fac)
-fac_num
+fac_num_1<-as.numeric(char_fac_1)
+fac_num_1
 
 # convert the factors:
 
-fac_char<-as.character(df_1$fac_1)
-fac_char
+fac_char_1<-as.character(df_1$fac_1)
+fac_char_1
 
-char_num<-as.numeric(fac_char)
-char_num
+char_num_1<-as.numeric(fac_char_1)
+char_num_1
 ```
 
 
@@ -83,8 +83,46 @@ fac_2<-as.factor(logic_2)
 plot_df<-data.frame(x, y, logic_2, num_2, fac_2)
 
 # description of the data frame
-##  * the size of the dataset * 
 
+##  the size of the dataset 
+dim(plot_df)
+
+##  mean and median
+summary(plot_df)
+
+## proportion
+propTRUE_plot_df<-sum(plot_df$num_2)/1000
+propTRUE_plot_df
+
+```
+
+## scatterplots
+```{r}
+library(ggplot2)
+
+# scatterplot 1 -- logic vector
+ggplot(plot_df, aes(x = x, y = y, fill = logic_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with logic vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
+
+# scatterplot 2 -- numeric vector
+ggplot(plot_df, aes(x = x, y = y, fill = num_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with numeric vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
+
+# scatterplot 3 -- factor vector
+ggplot(plot_df, aes(x = x, y = y, fill = fac_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with factor vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
 
 ```
 
