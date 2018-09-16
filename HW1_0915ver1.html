@@ -127,18 +127,18 @@ $(document).ready(function () {
 </div>
 
 
-<div id="problem1" class="section level1">
-<h1>Problem1</h1>
+<div id="problem-1" class="section level1">
+<h1>Problem 1</h1>
 <div id="start-with-a-data-frame" class="section level2">
 <h2>Start with a data frame</h2>
 <pre class="r"><code># data frame
 library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ------------------------------------------------ tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages -------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## √ ggplot2 3.0.0     √ purrr   0.2.5
 ## √ tibble  1.4.2     √ dplyr   0.7.6
 ## √ tidyr   0.8.1     √ stringr 1.3.1
 ## √ readr   1.1.1     √ forcats 0.3.0</code></pre>
-<pre><code>## -- Conflicts --------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ----------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>set.seed(1)
@@ -192,6 +192,28 @@ fac_char</code></pre>
 <pre><code>## Warning: 强制改变过程中产生了NA</code></pre>
 <pre class="r"><code>char_num</code></pre>
 <pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+</div>
+</div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<div id="start-with-a-data-frame-1" class="section level2">
+<h2>start with a data frame</h2>
+<pre class="r"><code># set the data frame
+
+set.seed(1)
+x&lt;-rnorm(1000)
+
+set.seed(4)
+y&lt;-rnorm(1000)
+
+logic_2&lt;-c(x+y&gt;0)
+num_2&lt;-as.numeric(logic_2)
+fac_2&lt;-as.factor(logic_2)
+
+plot_df&lt;-data.frame(x, y, logic_2, num_2, fac_2)
+
+# description of the data frame
+##  * the size of the dataset * </code></pre>
 </div>
 </div>
 

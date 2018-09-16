@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Problem1 
+# Problem 1 
 
 ## Start with a data frame
 
@@ -61,5 +61,30 @@ fac_char
 
 char_num<-as.numeric(fac_char)
 char_num
+```
+
+
+# Problem 2
+
+## start with a data frame
+```{r data frame}
+# set the data frame
+
+set.seed(1)
+x<-rnorm(1000)
+
+set.seed(4)
+y<-rnorm(1000)
+
+logic_2<-c(x+y>0)
+num_2<-as.numeric(logic_2)
+fac_2<-as.factor(logic_2)
+
+plot_df<-data.frame(x, y, logic_2, num_2, fac_2)
+
+# description of the data frame
+##  * the size of the dataset * 
+
+
 ```
 
