@@ -31,7 +31,7 @@ mean(df_1$logic_1)
 mean(df_1$char_1)       
 mean(df_1$fac_1)
 # means of the character vector and the  factor vector are NA.
-
+summary(df_1)
 ```
 
 ## 'as.numeric' function
@@ -91,7 +91,7 @@ dim(plot_df)
 summary(plot_df)
 
 ## proportion
-propTRUE_plot_df<-sum(plot_df$num_2)/1000
+propTRUE_plot_df<-prop.table(table(plot_df$logic_2))
 propTRUE_plot_df
 
 ```
