@@ -1,6 +1,6 @@
 ---
 title: "p8105_hw1_cy2522"
-output: html_document
+output: github_document
 author: "Chu Yu"
 ---
 
@@ -87,19 +87,23 @@ fac_2 <- as.factor(logic_2)
 
 plot_df <- data.frame(x, y, logic_2, num_2, fac_2)
 
+
+
+```
+
 # description of the data frame
 
 ##  the size of the dataset 
-dim(plot_df)
+`r dim(plot_df)`
 
 ##  mean and median
-summary(plot_df)
-
+`r mean(plot_df$x)`
+`r median(plot_df$x)`
 ## proportion
-propTRUE_plot_df <- prop.table(table(plot_df$logic_2))
-propTRUE_plot_df
+`r propTRUE_plot_df <- prop.table(table(plot_df$logic_2))`
+`r propTRUE_plot_df`
 
-```
+
 
 ## scatterplots
 ```{r}
