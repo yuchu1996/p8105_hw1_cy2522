@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 set.seed(1)
 
-df_1=tibble(
+df_1 = tibble(
 num_1 = runif(10,0,5),
-logic_1 = c(num_1>2),
+logic_1 = c(num_1 > 2),
 char_1 = c("this", "is", "my", "first", "home", "work", "problem", "of", "data", "science" ),
 fac_1 = factor(c("a", "b", "c", "d", "e", "f", "g", "h", "i", "x"))
 )
@@ -30,7 +30,7 @@ mean(df_1$num_1)
 mean(df_1$logic_1)
 mean(df_1$char_1)       
 mean(df_1$fac_1)
-# means of the character vector and the  factor vector are NA.
+# means of the character vector and the  factor vector are NA.The means of them are regarded as missing value because they can not be calculated.
 summary(df_1)
 ```
 
@@ -49,19 +49,19 @@ as.numeric(df_1$fac_1)
 ```{r convert}
 # convert the characters:
 
-char_fac_1<-as.factor(df_1$char_1)
+char_fac_1 <- as.factor(df_1$char_1)
 char_fac_1  
   
 
-fac_num_1<-as.numeric(char_fac_1)
+fac_num_1 <- as.numeric(char_fac_1)
 fac_num_1
 
 # convert the factors:
 
-fac_char_1<-as.character(df_1$fac_1)
+fac_char_1 <- as.character(df_1$fac_1)
 fac_char_1
 
-char_num_1<-as.numeric(fac_char_1)
+char_num_1 <- as.numeric(fac_char_1)
 char_num_1
 ```
 
@@ -73,16 +73,16 @@ char_num_1
 # set the data frame
 
 set.seed(1)
-x<-rnorm(1000)
+x <- rnorm(1000)
 
 set.seed(4)
-y<-rnorm(1000)
+y <- rnorm(1000)
 
-logic_2<-c(x+y>0)
-num_2<-as.numeric(logic_2)
-fac_2<-as.factor(logic_2)
+logic_2 <- c(x + y > 0)
+num_2 <- as.numeric(logic_2)
+fac_2 <- as.factor(logic_2)
 
-plot_df<-data.frame(x, y, logic_2, num_2, fac_2)
+plot_df <- data.frame(x, y, logic_2, num_2, fac_2)
 
 # description of the data frame
 
@@ -93,7 +93,7 @@ dim(plot_df)
 summary(plot_df)
 
 ## proportion
-propTRUE_plot_df<-prop.table(table(plot_df$logic_2))
+propTRUE_plot_df <- prop.table(table(plot_df$logic_2))
 propTRUE_plot_df
 
 ```
