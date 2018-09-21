@@ -51,18 +51,21 @@ as.numeric(df_1$fac_1)
 
 char_fac_1 <- as.factor(df_1$char_1)
 char_fac_1  
-  
+## when converted into factors, the charactors does not change much. The order of words changed by the initial letter.  
 
 fac_num_1 <- as.numeric(char_fac_1)
 fac_num_1
+## they change into numbers 
 
 # convert the factors:
 
 fac_char_1 <- as.character(df_1$fac_1)
 fac_char_1
+## the words looks the same, but change into charactors.
 
 char_num_1 <- as.numeric(fac_char_1)
 char_num_1
+## the value can not be obtained, meaning that charactors can not be converted into numbers, but factors can.
 ```
 
 
@@ -103,24 +106,26 @@ propTRUE_plot_df
 library(ggplot2)
 
 # scatterplot 1 -- logic vector
-ggplot(plot_df, aes(x = x, y = y, fill = logic_2)) +
-  geom_boxplot() +
+ggplot(plot_df, aes(x = x, y = y, colour = logic_2)) +
+  geom_point() +
   scale_fill_manual(values = c("blue", "red"),
                     labels = expression("x + y < 0", "x + y > 0")) +
   labs( x = "x", y = "y", title = "scatterplot of plot_df filled with logic vector") +
   theme(legend.position = "top", legend.title = element_blank()) 
 
+ggsave("scatterplots1_hw1.pdf", width = 7, height = 7)
+
 # scatterplot 2 -- numeric vector
-ggplot(plot_df, aes(x = x, y = y, fill = num_2)) +
-  geom_boxplot() +
+ggplot(plot_df, aes(x = x, y = y, colour = num_2)) +
+  geom_point() +
   scale_fill_manual(values = c("blue", "red"),
                     labels = expression("x + y < 0", "x + y > 0")) +
   labs( x = "x", y = "y", title = "scatterplot of plot_df filled with numeric vector") +
   theme(legend.position = "top", legend.title = element_blank()) 
 
 # scatterplot 3 -- factor vector
-ggplot(plot_df, aes(x = x, y = y, fill = fac_2)) +
-  geom_boxplot() +
+ggplot(plot_df, aes(x = x, y = y, colour = fac_2)) +
+  geom_point() +
   scale_fill_manual(values = c("blue", "red"),
                     labels = expression("x + y < 0", "x + y > 0")) +
   labs( x = "x", y = "y", title = "scatterplot of plot_df filled with factor vector") +
