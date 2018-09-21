@@ -1,0 +1,130 @@
+---
+title: "p8105_hw1_cy2522"
+output: html_document
+author: "Chu Yu"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Problem 1 
+
+## Start with a data frame
+
+```{r  Problem1 solutions}
+# data frame
+library(tidyverse)
+set.seed(1)
+
+df_1=tibble(
+num_1 = runif(10,0,5),
+logic_1 = c(num_1>2),
+char_1 = c("this", "is", "my", "first", "home", "work", "problem", "of", "data", "science" ),
+fac_1 = factor(c("a", "b", "c", "d", "e", "f", "g", "h", "i", "x"))
+)
+
+# mean
+mean(df_1$num_1)      
+mean(df_1$logic_1)
+mean(df_1$char_1)       
+mean(df_1$fac_1)
+# means of the character vector and the  factor vector are NA.
+summary(df_1)
+```
+
+## 'as.numeric' function
+
+```{r as.numeric, eval = FALSE}
+# as.numeric
+
+as.numeric(df_1$num_1)
+as.numeric(df_1$logic_1)
+as.numeric(df_1$char_1)
+as.numeric(df_1$fac_1)
+```
+  
+## converting
+```{r convert}
+# convert the characters:
+
+char_fac_1<-as.factor(df_1$char_1)
+char_fac_1  
+  
+
+fac_num_1<-as.numeric(char_fac_1)
+fac_num_1
+
+# convert the factors:
+
+fac_char_1<-as.character(df_1$fac_1)
+fac_char_1
+
+char_num_1<-as.numeric(fac_char_1)
+char_num_1
+```
+
+
+# Problem 2
+
+## start with a data frame
+```{r data frame}
+# set the data frame
+
+set.seed(1)
+x<-rnorm(1000)
+
+set.seed(4)
+y<-rnorm(1000)
+
+logic_2<-c(x+y>0)
+num_2<-as.numeric(logic_2)
+fac_2<-as.factor(logic_2)
+
+plot_df<-data.frame(x, y, logic_2, num_2, fac_2)
+
+# description of the data frame
+
+##  the size of the dataset 
+dim(plot_df)
+
+##  mean and median
+summary(plot_df)
+
+## proportion
+propTRUE_plot_df<-prop.table(table(plot_df$logic_2))
+propTRUE_plot_df
+
+```
+
+## scatterplots
+```{r}
+library(ggplot2)
+
+# scatterplot 1 -- logic vector
+ggplot(plot_df, aes(x = x, y = y, fill = logic_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with logic vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
+
+# scatterplot 2 -- numeric vector
+ggplot(plot_df, aes(x = x, y = y, fill = num_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with numeric vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
+
+# scatterplot 3 -- factor vector
+ggplot(plot_df, aes(x = x, y = y, fill = fac_2)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("blue", "red"),
+                    labels = expression("x + y < 0", "x + y > 0")) +
+  labs( x = "x", y = "y", title = "scatterplot of plot_df filled with factor vector") +
+  theme(legend.position = "top", legend.title = element_blank()) 
+
+```
+
